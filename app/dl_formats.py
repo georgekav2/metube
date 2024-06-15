@@ -92,6 +92,10 @@ def get_opts(format: str, quality: str, ytdl_opts: dict) -> dict:
             postprocessors.append({"key": "EmbedThumbnail"})
             postprocessors.append({"key": "FFmpegSplitChapters"})
 
+    else:
+        postprocessors.append({"key": "FFmpegMetadata", "add_chapters": True})
+
+
     if format == "thumbnail":
         opts["skip_download"] = True
         opts["writethumbnail"] = True
